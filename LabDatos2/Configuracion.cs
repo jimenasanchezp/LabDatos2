@@ -11,7 +11,7 @@
         // ══════════════════════════════════════════════
         private static readonly string Servidor = "10.12.13.137,1433";
 
-        // Si necesitas cambiar de red, comenta la línea de arriba
+        //susus
         // y descomenta la que corresponda:
         // private static readonly string Servidor = "192.168.1.77,1433";
         // private static readonly string Servidor = "localhost,1433";
