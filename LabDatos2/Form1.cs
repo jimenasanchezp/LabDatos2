@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -146,81 +147,101 @@ namespace LabDatos2
 
         private async void btnMigrarSql_Click(object sender, EventArgs e)
         {
-            //comenta lo de arriba y checa esto 
+            // 1. Validamos tu TextBox de Lotes
+            if (!int.TryParse(txtTamañoLote.Text, out int tamañoLote) || tamañoLote <= 0)
+            {
+                MessageBox.Show("Por favor, escribe un número válido y mayor a 0 para el tamaño del lote.");
+                return;
+            }
+
             try
             {
-                List<Ciudadano> todosLosRegistros = _gestorArchivos.LeerTodos();
-                int total = todosLosRegistros.Count;
-
-                if (total == 0)
-                {
-                    MessageBox.Show("No hay datos en el archivo para migrar.");
-                    return;
-                }
-
-                ////// Leemos el tamaño del lote desde tu nuevo TextBox (por defecto será 500)
-                ////int tamañoLote = int.Parse(txtTamañoLote.Text);
-                // Validamos que el usuario haya escrito un número y que sea mayor a 0
-                if (!int.TryParse(txtTamañoLote.Text, out int tamañoLote) || tamañoLote <= 0)
-                {
-                    MessageBox.Show("Por favor, escribe un número válido y mayor a 0 para el tamaño del lote.", "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Detenemos el proceso hasta que escribas un número correcto
-                }
+                // Desactivamos el botón temporalmente para evitar dobles clics
+                btnMigrarSql.Enabled = false;
+                btnMigrarSql.Text = "Enviando lote...";
 
                 string connectionString = Configuracion.CadenaConexion;
-                //INICIAMOS EL CRONÓMETRO!
-                Stopwatch cronometro = new Stopwatch();
-                cronometro.Start();
+                int maxIdSQL = -1;
 
+                // 2. Averiguamos el último ID que ya existe en tu SQL Server
                 using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
-                    conexion.Open();
-
-                    for (int i = 0; i < total; i += tamañoLote)
+                    await conexion.OpenAsync();
+                    string queryMax = "SELECT ISNULL(MAX(Id), -1) FROM Ciudadano";
+                    using (SqlCommand cmdMax = new SqlCommand(queryMax, conexion))
                     {
-                        int cantidadRestante = Math.Min(tamañoLote, total - i);
-                        List<Ciudadano> loteActual = todosLosRegistros.GetRange(i, cantidadRestante);
+                        maxIdSQL = (int)await cmdMax.ExecuteScalarAsync();
+                    }
+                }
 
-                        using (SqlTransaction transaccion = conexion.BeginTransaction())
+                // 3. Preparamos la tabla que viajará al servidor
+                DataTable tablaNuevos = new DataTable();
+                tablaNuevos.Columns.Add("Id", typeof(int));
+                tablaNuevos.Columns.Add("Nombre", typeof(string));
+                tablaNuevos.Columns.Add("Edad", typeof(int));
+
+                // Leemos todos los registros de tu archivo local
+                List<Ciudadano> todos = _gestorArchivos.LeerTodos();
+
+                // 4. FILTRO INTELIGENTE CON LÍMITE
+                foreach (var c in todos)
+                {
+                    // Solo miramos los que tengan un ID mayor al que ya está guardado
+                    if (c.IdProp > maxIdSQL)
+                    {
+                        if (c.IdProp == 0 && string.IsNullOrWhiteSpace(c.NombreProp)) continue;
+
+                        tablaNuevos.Rows.Add(c.IdProp, c.NombreProp, c.EdadProp);
+
+                        // --- ¡EL FRENO! ---
+                        // Si nuestra tabla ya alcanzó la cantidad que escribiste en el TextBox, nos detenemos.
+                        if (tablaNuevos.Rows.Count == tamañoLote)
                         {
-                            try
-                            {
-                                foreach (Ciudadano c in loteActual)
-                                {
-                                    if (c.IdProp == 0 && string.IsNullOrWhiteSpace(c.NombreProp)) continue;
-
-                                    string query = "INSERT INTO Ciudadano (Id, Nombre, Edad) VALUES (@Id, @Nombre, @Edad)";
-                                    using (SqlCommand comando = new SqlCommand(query, conexion, transaccion))
-                                    {
-                                        comando.Parameters.AddWithValue("@Id", c.IdProp);
-                                        comando.Parameters.AddWithValue("@Nombre", c.NombreProp);
-                                        comando.Parameters.AddWithValue("@Edad", c.EdadProp);
-                                        comando.ExecuteNonQuery();
-                                    }
-                                }
-                                transaccion.Commit();
-                            }
-                            catch (Exception)
-                            {
-                                transaccion.Rollback();
-                                throw;
-                            }
+                            break;
                         }
                     }
                 }
 
-                // DETENEMOS EL CRONÓMETRO!
-                cronometro.Stop();
+                if (tablaNuevos.Rows.Count == 0)
+                {
+                    MessageBox.Show("Todos los registros ya están en SQL Server. No hay nada nuevo que migrar.");
+                    return;
+                }
 
-                // Mostramos el tiempo exacto para tu reporte
-                MessageBox.Show($"¡Migración exitosa!\n\n" +
-                                $"Registros enviados: {total}\n" +
-                                $"Tamaño de los lotes: {tamañoLote}\n" +
-                                $"Tiempo total: {cronometro.ElapsedMilliseconds} milisegundos.");
+                Stopwatch cronometro = Stopwatch.StartNew();
+
+                // 5. MIGRAMOS SOLO ESE LOTE EXACTO
+                using (SqlConnection conexion = new SqlConnection(connectionString))
+                {
+                    await conexion.OpenAsync();
+
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(conexion))
+                    {
+                        bulkCopy.DestinationTableName = "Ciudadano";
+
+                        bulkCopy.ColumnMappings.Add("Id", "Id");
+                        bulkCopy.ColumnMappings.Add("Nombre", "Nombre");
+                        bulkCopy.ColumnMappings.Add("Edad", "Edad");
+
+                        await bulkCopy.WriteToServerAsync(tablaNuevos);
+                    }
+                }
+
+                cronometro.Stop();
+                MessageBox.Show($"¡Lote enviado con éxito!\n\n" +
+                                $"Registros enviados en este clic: {tablaNuevos.Rows.Count}\n" +
+                                $"Tiempo: {cronometro.ElapsedMilliseconds} ms.\n" +
+                                $"Puedes volver a presionar el botón para mandar el siguiente lote.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error durante la migración: " + ex.Message);
+            }
+            finally
+            {
+                // Volvemos a encender el botón
+                btnMigrarSql.Enabled = true;
+                btnMigrarSql.Text = "Migrar a SQL Server";
             }
         }
 
