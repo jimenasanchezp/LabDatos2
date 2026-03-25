@@ -24,14 +24,14 @@ namespace LabDatos2
             dgvCiudadanos.DataSource = _listaCiudadanos;
 
             ActualizarSiguienteRegistro();
-            txtTamañoLote.Text = "1000";//Lote para migrar a sql
+            txtTamañoLote.Text = "";//Lote para migrar a sql
             ConfigurarDisenoTabla();
             _gestorArchivos = new GestorArchivos();
             _gestorIndice = new GestorIndice();
 
             _migradorSql = new MigradorSql("Server=10.12.13.143,1433;Database=LabDatosDB;User Id=sa;Password=123;TrustServerCertificate=True;");
-            //_migradorSql = new MigradorSql(@"Server=192.168.1.77,1433;Database=LabDatosDB;User Id=sa;Password=123;TrustServerCertificate=True;");
-            _gestorIndice.CargarIndice();
+
+             _gestorIndice.CargarIndice();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -158,8 +158,14 @@ namespace LabDatos2
                     return;
                 }
 
-                // Leemos el tamaño del lote desde tu nuevo TextBox (por defecto será 500)
-                int tamañoLote = int.Parse(txtTamañoLote.Text);
+                ////// Leemos el tamaño del lote desde tu nuevo TextBox (por defecto será 500)
+                ////int tamañoLote = int.Parse(txtTamañoLote.Text);
+                // Validamos que el usuario haya escrito un número y que sea mayor a 0
+                if (!int.TryParse(txtTamañoLote.Text, out int tamañoLote) || tamañoLote <= 0)
+                {
+                    MessageBox.Show("Por favor, escribe un número válido y mayor a 0 para el tamaño del lote.", "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Detenemos el proceso hasta que escribas un número correcto
+                }
 
                 string connectionString = Configuracion.CadenaConexion;
                 //INICIAMOS EL CRONÓMETRO!
@@ -422,7 +428,14 @@ namespace LabDatos2
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            // 1. Preparamos las herramientas de generación
+            // 1. Validamos que el usuario haya ingresado un número válido en el nuevo TextBox
+            if (!int.TryParse(txtTamañoLote.Text, out int cantidadAGenerar) || cantidadAGenerar <= 0)
+            {
+                MessageBox.Show("Por favor, ingresa una cantidad válida (mayor a 0) para generar.", "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Detenemos la ejecución si no es un número válido
+            }
+
+            // 2. Preparamos las herramientas de generación
             Random rnd = new Random();
             string[] nombres = {
                 "Carolina", "Jimena", "Cesar", "Natalia", "Luis",
@@ -450,16 +463,15 @@ namespace LabDatos2
                 "Contreras", "Nunez", "Pacheco", "Velazquez", "Acosta"
             };
 
-            int inicioId = _listaCiudadanos.Count; // Empezamos desde el ID que siga
-            int cantidadAGenerar = 1000;
+            int inicioId = _listaCiudadanos.Count; // Empezamos desde el ID que siga            
 
             try
             {
-                // 2. Abrimos SOLO el archivo local .dat
+                // 3. Abrimos SOLO el archivo local .dat
                 using (FileStream fs = new FileStream("datos_ciudadanos.dat", FileMode.OpenOrCreate, FileAccess.Write))
                 using (BinaryWriter writer = new BinaryWriter(fs, Encoding.UTF8))
                 {
-                    // 3. Generamos los 1000 registros
+                    // 4. Generamos la cantidad de registros que el cliente pidió
                     for (int i = 0; i < cantidadAGenerar; i++)
                     {
                         int idActual = inicioId + i;
@@ -485,11 +497,12 @@ namespace LabDatos2
                     }
                 }
 
-                // 4. Actualizamos el cuadrito de texto del ID al terminar
+                // 5. Actualizamos el cuadrito de texto del ID al terminar
                 ActualizarSiguienteRegistro();
                 dgvCiudadanos.Refresh();
 
-                MessageBox.Show("¡1000 registros generados en el archivo local!\nRevisa tu tabla y presiona 'Migrar a SQL' cuando estés lista.");
+                // 6. Mensaje dinámico
+                MessageBox.Show($"¡{cantidadAGenerar} registros generados en el archivo local!\nRevisa tu tabla y presiona 'Migrar a SQL' cuando estés lista.");
             }
             catch (Exception ex)
             {
