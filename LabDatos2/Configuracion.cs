@@ -2,23 +2,12 @@
 {
     /// <summary>
     /// Configuración centralizada de conexión.
-    /// Cambia SOLO aquí cuando cambies de red.
     /// </summary>
     public static class Configuracion
     {
-        // ══════════════════════════════════════════════
-        //  CAMBIA SOLO ESTA LÍNEA AL CAMBIAR DE RED
-        // ══════════════════════════════════════════════
-        private static readonly string Servidor = "10.12.13.137,1433";
+        // linea del red
+        private static readonly string Servidor = "192.168.1.75,1433";
 
-        //susus
-        // y descomenta la que corresponda:
-        // private static readonly string Servidor = "192.168.1.77,1433";
-        // private static readonly string Servidor = "localhost,1433";
-
-        // ══════════════════════════════════════════════
-        //  NO TOQUES LO DE ABAJO
-        // ══════════════════════════════════════════════
         private const string BaseDatos = "LabDatosDB";
         private const string Usuario = "sa";
         private const string Password = "123";

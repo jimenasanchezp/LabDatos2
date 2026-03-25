@@ -43,7 +43,7 @@ namespace LabDatos2
                 {
                     Ciudadano ciudadano = new Ciudadano();
 
-                    // ⚠️ IMPORTANTE: El orden de lectura DEBE ser exactamente el mismo 
+                    // IMPORTANTE: El orden de lectura DEBE ser exactamente el mismo 
                     // en el que los guardas. Asumo que es Id, Nombre y Edad.
                     ciudadano.Id = br.ReadInt32();
                     //ciudadano.Nombre = br.ReadString();

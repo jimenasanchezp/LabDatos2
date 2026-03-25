@@ -36,38 +36,69 @@ namespace LabDatos2
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            int id = int.Parse(txtId.Text);
+            string nombre = txtNombre.Text;
+            int edad = int.Parse(txtEdad.Text);
+
+            Ciudadano ciudadano = new Ciudadano();
+            ciudadano.Id = id;
+            ciudadano.Nombre = txtNombre.Text;
+            ciudadano.Edad = edad;
+
+            // La consulta SQL con parámetros
+            string query = "INSERT INTO Ciudadano (Id, Nombre, Edad ) VALUES (@id, @nombre, @edad)";
+
             try
             {
-                int id = int.Parse(txtId.Text);
-                string nombre = txtNombre.Text;
-                int edad = int.Parse(txtEdad.Text);
-                int posicion = int.Parse(txtPosicion.Text);
+                using (SqlConnection conexion = new SqlConnection(Configuracion.CadenaConexion))
+                {
+                    using (SqlCommand comando = new SqlCommand(query, conexion))
+                    {
+                        // Asignamos los parámetros de forma segura
+                        comando.Parameters.AddWithValue("@id", ciudadano.Id);
+                        comando.Parameters.AddWithValue("@nombre", ciudadano.Nombre);
+                        comando.Parameters.AddWithValue("@edad", ciudadano.Edad);
 
-                Ciudadano ciudadano = new Ciudadano();
-                ciudadano.Id = id;
-                ciudadano.Nombre = nombre;
-                ciudadano.Edad = edad;
+                        conexion.Open();
+                        comando.ExecuteNonQuery(); // Enviamos el registro al servidor
+                    }
+                }
 
-                // 1. Guardar en archivos locales
-                _gestorArchivos.GuardarCiudadano(ciudadano, posicion);
-                _gestorIndice.GuardarEnIndice(id, posicion);
-
-                // 2. Agregar a la tabla visual
+                // Mantenemos la tabla visual actualizada
                 _listaCiudadanos.Add(ciudadano);
 
-                MessageBox.Show("Ciudadano guardado correctamente.");
-                // --- Nuevas líneas para limpiar la interfaz ---
+                // 1. Quitamos cualquier selección anterior
+                dgvCiudadanos.ClearSelection();
 
+                // 2. Recorremos el DGV para encontrar el ID recién agregado
+                // Recorremos el DGV para encontrar el registro
+                foreach (DataGridViewRow fila in dgvCiudadanos.Rows)
+                {
+                    // Usamos Cells[0] asumiendo que el ID es la primera columna
+                    if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == ciudadano.Id.ToString())
+                    {
+                        fila.Selected = true; // Resaltamos la fila
+                        dgvCiudadanos.FirstDisplayedScrollingRowIndex = fila.Index; // Hacemos scroll
+                        break;
+                    }
+                }
+                // -------------------------------------------------------
+
+                MessageBox.Show("Ciudadano guardado correctamente en SQL Server.");
+
+                // Limpiamos la interfaz
                 txtNombre.Clear();
                 txtEdad.Clear();
                 txtPosicion.Clear();
-
-                // ¡Actualizamos para el siguiente registro!
                 ActualizarSiguienteRegistro();
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show("Error al conectar con el servidor: " + sqlEx.Message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar: " + ex.Message);
+                MessageBox.Show("Error inesperado al guardar: " + ex.Message);
             }
         }
 
@@ -115,20 +146,6 @@ namespace LabDatos2
 
         private async void btnMigrarSql_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    btnMigrarSql.Enabled = false;
-            //    await _migradorSql.MigrarDesdeArchivo("datos_ciudadanos.dat");
-            //    MessageBox.Show("Migración a SQL Server EXPRESS completada.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error en migración: " + ex.Message);
-            //}
-            //finally
-            //{
-            //    btnMigrarSql.Enabled = true;
-            //}
             //comenta lo de arriba y checa esto 
             try
             {
@@ -242,31 +259,6 @@ namespace LabDatos2
             // 3. Volver a conectar la lista ya con los datos recién salidos del horno
             dgvCiudadanos.DataSource = _listaCiudadanos;
 
-
-            //try
-            //{
-            //    // 1. Limpiamos la lista visual para evitar duplicados en pantalla
-            //    _listaCiudadanos.Clear();
-
-            //    // 2. Le pedimos al gestor que nos traiga todos los datos del archivo local .dat
-            //    // (Asegúrate de tener un método similar a este en tu clase GestorArchivos)
-            //    List<Ciudadano> registros = _gestorArchivos.LeerTodos();
-
-            //    // 3. Recorremos los registros y los agregamos a la tabla
-            //    foreach (Ciudadano ciudadano in registros)
-            //    {
-            //        // Opcional: Filtramos el registro "fantasma" de la posición 0 que vimos antes
-            //        if (ciudadano.Id != 0)
-            //        {
-            //            _listaCiudadanos.Add(ciudadano);
-            //        }
-            //    }
-            //    ActualizarSiguienteRegistro();
-            //    MessageBox.Show("Datos cargados exitosamente en la tabla.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error al mostrar los datos: " + ex.Message);
         }
 
         private void ActualizarSiguienteRegistro()
@@ -432,8 +424,6 @@ namespace LabDatos2
         {
             // 1. Preparamos las herramientas de generación
             Random rnd = new Random();
-            //string[] nombres = { "Carolina", "Jimena", "Cesar", "Natalia", "Luis", "Elena", "Pedro", "Sofia", "Miguel", "Lucia" };
-            //string[] apellidos = { "Gomez", "Sanchez", "Perez", "Rodriguez", "Lopez", "Martinez", "Garcia", "Hernandez", "Ruiz", "Diaz" };
             string[] nombres = {
                 "Carolina", "Jimena", "Cesar", "Natalia", "Luis",
                 "Elena", "Pedro", "Sofia", "Miguel", "Lucia",
