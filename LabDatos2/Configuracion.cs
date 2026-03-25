@@ -6,9 +6,9 @@
     public static class Configuracion
     {
         // linea del red
-        private static readonly string Servidor = "192.168.1.75,1433";
+        private static readonly string Servidor = "10.12.13.108,1433";
 
-        private const string BaseDatos = "LabDatosDB";
+        private const string BaseDatos = "LabDatos2";
         private const string Usuario = "sa";
         private const string Password = "123";
 

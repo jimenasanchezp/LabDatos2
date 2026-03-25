@@ -18,535 +18,610 @@ namespace LabDatos2
 
         private void InitializeComponent()
         {
-            // ══════════════════════════════════════════════════════════════
-            //  PALETA  —  Rose Executive (variables locales)
-            // ══════════════════════════════════════════════════════════════
-            Color cBgForm = Color.FromArgb(250, 246, 248);
-            Color cBgPanel = Color.White;
-            Color cBgInput = Color.FromArgb(253, 250, 252);
-            Color cBgInputRO = Color.FromArgb(245, 241, 244);
-            Color cRose = Color.FromArgb(188, 100, 130);
-            Color cRoseDark = Color.FromArgb(155, 70, 100);
-            Color cMauve = Color.FromArgb(160, 120, 155);
-            Color cSage = Color.FromArgb(110, 155, 135);
-            Color cSlate = Color.FromArgb(100, 110, 140);
-            Color cTextDark = Color.FromArgb(60, 45, 55);
-            Color cTextMid = Color.FromArgb(90, 55, 72);
-            Color cTextLight = Color.FromArgb(148, 85, 112);
-            Color cBorder = Color.FromArgb(228, 210, 220);
-            Color cHeaderBg = Color.FromArgb(80, 50, 70);
-            Color cPanelGap = Color.FromArgb(235, 225, 230);
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblSubtitulo = new System.Windows.Forms.Label();
+            this.pnlAccent = new System.Windows.Forms.Panel();
+            this.pnlLeft = new System.Windows.Forms.Panel();
+            this.lblSeccionRegistro = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEdad = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPosicion = new System.Windows.Forms.TextBox();
+            this.divReg = new System.Windows.Forms.Panel();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnCargar = new System.Windows.Forms.Button();
+            this.btnVaciar = new System.Windows.Forms.Button();
+            this.divLote = new System.Windows.Forms.Panel();
+            this.lblLote = new System.Windows.Forms.Label();
+            this.txtTamañoLote = new System.Windows.Forms.TextBox();
+            this.pnlCenter = new System.Windows.Forms.Panel();
+            this.lblSeccionBusqueda = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBuscarId = new System.Windows.Forms.TextBox();
+            this.btnBuscarSecuencial = new System.Windows.Forms.Button();
+            this.btnBuscarIndexado = new System.Windows.Forms.Button();
+            this.divRes = new System.Windows.Forms.Panel();
+            this.lblResultado = new System.Windows.Forms.Label();
+            this.lblTimingTitle = new System.Windows.Forms.Label();
+            this.lblTiempoSecuencial = new System.Windows.Forms.Label();
+            this.lblTiempoIndexado = new System.Windows.Forms.Label();
+            this.divOps = new System.Windows.Forms.Panel();
+            this.lblSeccionOps = new System.Windows.Forms.Label();
+            this.btnMigrarSql = new System.Windows.Forms.Button();
+            this.pnlRight = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnMostrarDatos = new System.Windows.Forms.Button();
+            this.dgvCiudadanos = new System.Windows.Forms.DataGridView();
+            this.sepLC = new System.Windows.Forms.Panel();
+            this.sepCR = new System.Windows.Forms.Panel();
+            this.pnlHeader.SuspendLayout();
+            this.pnlLeft.SuspendLayout();
+            this.pnlCenter.SuspendLayout();
+            this.pnlRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCiudadanos)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
+            this.pnlHeader.Controls.Add(this.lblTitulo);
+            this.pnlHeader.Controls.Add(this.lblSubtitulo);
+            this.pnlHeader.Controls.Add(this.pnlAccent);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(1270, 70);
+            this.pnlHeader.TabIndex = 0;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(20, 8);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(271, 32);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "El Arquitecto de Datos";
+            // 
+            // lblSubtitulo
+            // 
+            this.lblSubtitulo.AutoSize = true;
+            this.lblSubtitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblSubtitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(175)))), ((int)(((byte)(190)))));
+            this.lblSubtitulo.Location = new System.Drawing.Point(22, 42);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(240, 20);
+            this.lblSubtitulo.TabIndex = 1;
+            this.lblSubtitulo.Text = "Gestión y búsqueda de ciudadanos";
+            // 
+            // pnlAccent
+            // 
+            this.pnlAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(100)))), ((int)(((byte)(130)))));
+            this.pnlAccent.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlAccent.Location = new System.Drawing.Point(0, 67);
+            this.pnlAccent.Name = "pnlAccent";
+            this.pnlAccent.Size = new System.Drawing.Size(1270, 3);
+            this.pnlAccent.TabIndex = 2;
+            // 
+            // pnlLeft
+            // 
+            this.pnlLeft.BackColor = System.Drawing.Color.White;
+            this.pnlLeft.Controls.Add(this.lblSeccionRegistro);
+            this.pnlLeft.Controls.Add(this.label1);
+            this.pnlLeft.Controls.Add(this.txtId);
+            this.pnlLeft.Controls.Add(this.label2);
+            this.pnlLeft.Controls.Add(this.txtNombre);
+            this.pnlLeft.Controls.Add(this.label3);
+            this.pnlLeft.Controls.Add(this.txtEdad);
+            this.pnlLeft.Controls.Add(this.label4);
+            this.pnlLeft.Controls.Add(this.txtPosicion);
+            this.pnlLeft.Controls.Add(this.divReg);
+            this.pnlLeft.Controls.Add(this.btnGuardar);
+            this.pnlLeft.Controls.Add(this.btnEditar);
+            this.pnlLeft.Controls.Add(this.btnEliminar);
+            this.pnlLeft.Controls.Add(this.btnCargar);
+            this.pnlLeft.Controls.Add(this.btnVaciar);
+            this.pnlLeft.Controls.Add(this.divLote);
+            this.pnlLeft.Location = new System.Drawing.Point(12, 82);
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Size = new System.Drawing.Size(258, 500);
+            this.pnlLeft.TabIndex = 1;
+            // 
+            // lblSeccionRegistro
+            // 
+            this.lblSeccionRegistro.AutoSize = true;
+            this.lblSeccionRegistro.BackColor = System.Drawing.Color.Transparent;
+            this.lblSeccionRegistro.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblSeccionRegistro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.lblSeccionRegistro.Location = new System.Drawing.Point(16, 18);
+            this.lblSeccionRegistro.Name = "lblSeccionRegistro";
+            this.lblSeccionRegistro.Size = new System.Drawing.Size(75, 19);
+            this.lblSeccionRegistro.TabIndex = 0;
+            this.lblSeccionRegistro.Text = "REGISTRO";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.label1.Location = new System.Drawing.Point(16, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "ID";
+            // 
+            // txtId
+            // 
+            this.txtId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(241)))), ((int)(((byte)(244)))));
+            this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtId.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.txtId.Location = new System.Drawing.Point(16, 62);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(224, 30);
+            this.txtId.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.label2.Location = new System.Drawing.Point(16, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "NOMBRE";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(45)))), ((int)(((byte)(55)))));
+            this.txtNombre.Location = new System.Drawing.Point(16, 116);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(224, 30);
+            this.txtNombre.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.label3.Location = new System.Drawing.Point(16, 154);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 19);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "EDAD";
+            // 
+            // txtEdad
+            // 
+            this.txtEdad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.txtEdad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEdad.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtEdad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(45)))), ((int)(((byte)(55)))));
+            this.txtEdad.Location = new System.Drawing.Point(16, 170);
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.Size = new System.Drawing.Size(224, 30);
+            this.txtEdad.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.label4.Location = new System.Drawing.Point(16, 208);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 19);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "POSICIÓN";
+            // 
+            // txtPosicion
+            // 
+            this.txtPosicion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.txtPosicion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPosicion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPosicion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(45)))), ((int)(((byte)(55)))));
+            this.txtPosicion.Location = new System.Drawing.Point(16, 224);
+            this.txtPosicion.Name = "txtPosicion";
+            this.txtPosicion.Size = new System.Drawing.Size(224, 30);
+            this.txtPosicion.TabIndex = 3;
+            // 
+            // divReg
+            // 
+            this.divReg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
+            this.divReg.Location = new System.Drawing.Point(16, 264);
+            this.divReg.Name = "divReg";
+            this.divReg.Size = new System.Drawing.Size(224, 1);
+            this.divReg.TabIndex = 5;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(100)))), ((int)(((byte)(130)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(16, 276);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(224, 34);
+            this.btnGuardar.TabIndex = 4;
+            this.btnGuardar.Text = "Guardar Registro";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.Color.White;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(120)))), ((int)(((byte)(155)))));
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(120)))), ((int)(((byte)(155)))));
+            this.btnEditar.Location = new System.Drawing.Point(16, 320);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(108, 30);
+            this.btnEditar.TabIndex = 15;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.White;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.btnEliminar.Location = new System.Drawing.Point(132, 320);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(108, 30);
+            this.btnEliminar.TabIndex = 16;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // btnCargar
+            // 
+            this.btnCargar.BackColor = System.Drawing.Color.White;
+            this.btnCargar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.btnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCargar.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnCargar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.btnCargar.Location = new System.Drawing.Point(16, 360);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(108, 30);
+            this.btnCargar.TabIndex = 17;
+            this.btnCargar.Text = "Cargar";
+            this.btnCargar.UseVisualStyleBackColor = false;
+            // 
+            // btnVaciar
+            // 
+            this.btnVaciar.BackColor = System.Drawing.Color.White;
+            this.btnVaciar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVaciar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.btnVaciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVaciar.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnVaciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.btnVaciar.Location = new System.Drawing.Point(132, 360);
+            this.btnVaciar.Name = "btnVaciar";
+            this.btnVaciar.Size = new System.Drawing.Size(108, 30);
+            this.btnVaciar.TabIndex = 19;
+            this.btnVaciar.Text = "Vaciar";
+            this.btnVaciar.UseVisualStyleBackColor = false;
+            // 
+            // divLote
+            // 
+            this.divLote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
+            this.divLote.Location = new System.Drawing.Point(16, 404);
+            this.divLote.Name = "divLote";
+            this.divLote.Size = new System.Drawing.Size(224, 1);
+            this.divLote.TabIndex = 20;
+            // 
+            // lblLote
+            // 
+            this.lblLote.AutoSize = true;
+            this.lblLote.BackColor = System.Drawing.Color.Transparent;
+            this.lblLote.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblLote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.lblLote.Location = new System.Drawing.Point(19, 371);
+            this.lblLote.Name = "lblLote";
+            this.lblLote.Size = new System.Drawing.Size(128, 19);
+            this.lblLote.TabIndex = 21;
+            this.lblLote.Text = "TAMAÑO DE LOTE";
+            // 
+            // txtTamañoLote
+            // 
+            this.txtTamañoLote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.txtTamañoLote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTamañoLote.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtTamañoLote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(45)))), ((int)(((byte)(55)))));
+            this.txtTamañoLote.Location = new System.Drawing.Point(16, 401);
+            this.txtTamañoLote.Multiline = true;
+            this.txtTamañoLote.Name = "txtTamañoLote";
+            this.txtTamañoLote.Size = new System.Drawing.Size(224, 40);
+            this.txtTamañoLote.TabIndex = 18;
+            // 
+            // pnlCenter
+            // 
+            this.pnlCenter.BackColor = System.Drawing.Color.White;
+            this.pnlCenter.Controls.Add(this.lblSeccionBusqueda);
+            this.pnlCenter.Controls.Add(this.label5);
+            this.pnlCenter.Controls.Add(this.txtBuscarId);
+            this.pnlCenter.Controls.Add(this.btnBuscarSecuencial);
+            this.pnlCenter.Controls.Add(this.btnBuscarIndexado);
+            this.pnlCenter.Controls.Add(this.divRes);
+            this.pnlCenter.Controls.Add(this.lblResultado);
+            this.pnlCenter.Controls.Add(this.lblTimingTitle);
+            this.pnlCenter.Controls.Add(this.lblTiempoSecuencial);
+            this.pnlCenter.Controls.Add(this.lblTiempoIndexado);
+            this.pnlCenter.Controls.Add(this.divOps);
+            this.pnlCenter.Controls.Add(this.lblSeccionOps);
+            this.pnlCenter.Controls.Add(this.btnMigrarSql);
+            this.pnlCenter.Controls.Add(this.txtTamañoLote);
+            this.pnlCenter.Controls.Add(this.lblLote);
+            this.pnlCenter.Location = new System.Drawing.Point(282, 82);
+            this.pnlCenter.Name = "pnlCenter";
+            this.pnlCenter.Size = new System.Drawing.Size(258, 500);
+            this.pnlCenter.TabIndex = 3;
+            // 
+            // lblSeccionBusqueda
+            // 
+            this.lblSeccionBusqueda.AutoSize = true;
+            this.lblSeccionBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.lblSeccionBusqueda.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblSeccionBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.lblSeccionBusqueda.Location = new System.Drawing.Point(16, 18);
+            this.lblSeccionBusqueda.Name = "lblSeccionBusqueda";
+            this.lblSeccionBusqueda.Size = new System.Drawing.Size(84, 19);
+            this.lblSeccionBusqueda.TabIndex = 0;
+            this.lblSeccionBusqueda.Text = "BÚSQUEDA";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.label5.Location = new System.Drawing.Point(16, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 19);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "ID A BUSCAR";
+            // 
+            // txtBuscarId
+            // 
+            this.txtBuscarId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.txtBuscarId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscarId.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtBuscarId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(45)))), ((int)(((byte)(55)))));
+            this.txtBuscarId.Location = new System.Drawing.Point(16, 62);
+            this.txtBuscarId.Name = "txtBuscarId";
+            this.txtBuscarId.Size = new System.Drawing.Size(224, 30);
+            this.txtBuscarId.TabIndex = 5;
+            // 
+            // btnBuscarSecuencial
+            // 
+            this.btnBuscarSecuencial.BackColor = System.Drawing.Color.White;
+            this.btnBuscarSecuencial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarSecuencial.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(120)))), ((int)(((byte)(155)))));
+            this.btnBuscarSecuencial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarSecuencial.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnBuscarSecuencial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(120)))), ((int)(((byte)(155)))));
+            this.btnBuscarSecuencial.Location = new System.Drawing.Point(16, 104);
+            this.btnBuscarSecuencial.Name = "btnBuscarSecuencial";
+            this.btnBuscarSecuencial.Size = new System.Drawing.Size(224, 32);
+            this.btnBuscarSecuencial.TabIndex = 6;
+            this.btnBuscarSecuencial.Text = "Búsqueda Secuencial";
+            this.btnBuscarSecuencial.UseVisualStyleBackColor = false;
+            // 
+            // btnBuscarIndexado
+            // 
+            this.btnBuscarIndexado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(155)))), ((int)(((byte)(135)))));
+            this.btnBuscarIndexado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarIndexado.FlatAppearance.BorderSize = 0;
+            this.btnBuscarIndexado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarIndexado.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnBuscarIndexado.ForeColor = System.Drawing.Color.White;
+            this.btnBuscarIndexado.Location = new System.Drawing.Point(16, 146);
+            this.btnBuscarIndexado.Name = "btnBuscarIndexado";
+            this.btnBuscarIndexado.Size = new System.Drawing.Size(224, 32);
+            this.btnBuscarIndexado.TabIndex = 7;
+            this.btnBuscarIndexado.Text = "Búsqueda Indexada";
+            this.btnBuscarIndexado.UseVisualStyleBackColor = false;
+            // 
+            // divRes
+            // 
+            this.divRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
+            this.divRes.Location = new System.Drawing.Point(16, 194);
+            this.divRes.Name = "divRes";
+            this.divRes.Size = new System.Drawing.Size(224, 1);
+            this.divRes.TabIndex = 8;
+            // 
+            // lblResultado
+            // 
+            this.lblResultado.BackColor = System.Drawing.Color.Transparent;
+            this.lblResultado.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblResultado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.lblResultado.Location = new System.Drawing.Point(16, 200);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(224, 42);
+            this.lblResultado.TabIndex = 10;
+            this.lblResultado.Text = "Esperando búsqueda...";
+            // 
+            // lblTimingTitle
+            // 
+            this.lblTimingTitle.AutoSize = true;
+            this.lblTimingTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTimingTitle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblTimingTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.lblTimingTitle.Location = new System.Drawing.Point(16, 252);
+            this.lblTimingTitle.Name = "lblTimingTitle";
+            this.lblTimingTitle.Size = new System.Drawing.Size(168, 19);
+            this.lblTimingTitle.TabIndex = 11;
+            this.lblTimingTitle.Text = "TIEMPOS DE EJECUCIÓN";
+            // 
+            // lblTiempoSecuencial
+            // 
+            this.lblTiempoSecuencial.AutoSize = true;
+            this.lblTiempoSecuencial.BackColor = System.Drawing.Color.Transparent;
+            this.lblTiempoSecuencial.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblTiempoSecuencial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.lblTiempoSecuencial.Location = new System.Drawing.Point(16, 274);
+            this.lblTiempoSecuencial.Name = "lblTiempoSecuencial";
+            this.lblTiempoSecuencial.Size = new System.Drawing.Size(131, 20);
+            this.lblTiempoSecuencial.TabIndex = 8;
+            this.lblTiempoSecuencial.Text = "Secuencial:  0 ticks";
+            // 
+            // lblTiempoIndexado
+            // 
+            this.lblTiempoIndexado.AutoSize = true;
+            this.lblTiempoIndexado.BackColor = System.Drawing.Color.Transparent;
+            this.lblTiempoIndexado.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblTiempoIndexado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(155)))), ((int)(((byte)(135)))));
+            this.lblTiempoIndexado.Location = new System.Drawing.Point(16, 296);
+            this.lblTiempoIndexado.Name = "lblTiempoIndexado";
+            this.lblTiempoIndexado.Size = new System.Drawing.Size(130, 20);
+            this.lblTiempoIndexado.TabIndex = 9;
+            this.lblTiempoIndexado.Text = "Indexada:    0 ticks";
+            // 
+            // divOps
+            // 
+            this.divOps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
+            this.divOps.Location = new System.Drawing.Point(16, 328);
+            this.divOps.Name = "divOps";
+            this.divOps.Size = new System.Drawing.Size(224, 1);
+            this.divOps.TabIndex = 12;
+            // 
+            // lblSeccionOps
+            // 
+            this.lblSeccionOps.AutoSize = true;
+            this.lblSeccionOps.BackColor = System.Drawing.Color.Transparent;
+            this.lblSeccionOps.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblSeccionOps.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.lblSeccionOps.Location = new System.Drawing.Point(16, 340);
+            this.lblSeccionOps.Name = "lblSeccionOps";
+            this.lblSeccionOps.Size = new System.Drawing.Size(105, 19);
+            this.lblSeccionOps.TabIndex = 13;
+            this.lblSeccionOps.Text = "OPERACIONES";
+            // 
+            // btnMigrarSql
+            // 
+            this.btnMigrarSql.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(140)))));
+            this.btnMigrarSql.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMigrarSql.FlatAppearance.BorderSize = 0;
+            this.btnMigrarSql.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMigrarSql.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnMigrarSql.ForeColor = System.Drawing.Color.White;
+            this.btnMigrarSql.Location = new System.Drawing.Point(16, 449);
+            this.btnMigrarSql.Name = "btnMigrarSql";
+            this.btnMigrarSql.Size = new System.Drawing.Size(224, 32);
+            this.btnMigrarSql.TabIndex = 11;
+            this.btnMigrarSql.Text = "Migrar a SQL Server";
+            this.btnMigrarSql.UseVisualStyleBackColor = false;
+            // 
+            // pnlRight
+            // 
+            this.pnlRight.BackColor = System.Drawing.Color.White;
+            this.pnlRight.Controls.Add(this.label6);
+            this.pnlRight.Controls.Add(this.btnMostrarDatos);
+            this.pnlRight.Controls.Add(this.dgvCiudadanos);
+            this.pnlRight.Location = new System.Drawing.Point(552, 82);
+            this.pnlRight.Name = "pnlRight";
+            this.pnlRight.Size = new System.Drawing.Size(706, 500);
+            this.pnlRight.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(85)))), ((int)(((byte)(112)))));
+            this.label6.Location = new System.Drawing.Point(16, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(172, 19);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "DATOS DE CIUDADANOS";
+            // 
+            // btnMostrarDatos
+            // 
+            this.btnMostrarDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(100)))), ((int)(((byte)(130)))));
+            this.btnMostrarDatos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMostrarDatos.FlatAppearance.BorderSize = 0;
+            this.btnMostrarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrarDatos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnMostrarDatos.ForeColor = System.Drawing.Color.White;
+            this.btnMostrarDatos.Location = new System.Drawing.Point(558, 12);
+            this.btnMostrarDatos.Name = "btnMostrarDatos";
+            this.btnMostrarDatos.Size = new System.Drawing.Size(130, 32);
+            this.btnMostrarDatos.TabIndex = 14;
+            this.btnMostrarDatos.Text = "Mostrar Datos";
+            this.btnMostrarDatos.UseVisualStyleBackColor = false;
+            // 
+            // dgvCiudadanos
+            // 
+            this.dgvCiudadanos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCiudadanos.Location = new System.Drawing.Point(16, 52);
+            this.dgvCiudadanos.Name = "dgvCiudadanos";
+            this.dgvCiudadanos.RowHeadersWidth = 51;
+            this.dgvCiudadanos.Size = new System.Drawing.Size(672, 436);
+            this.dgvCiudadanos.TabIndex = 12;
+            // 
+            // sepLC
+            // 
+            this.sepLC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.sepLC.Location = new System.Drawing.Point(270, 82);
+            this.sepLC.Name = "sepLC";
+            this.sepLC.Size = new System.Drawing.Size(12, 500);
+            this.sepLC.TabIndex = 2;
+            // 
+            // sepCR
+            // 
+            this.sepCR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.sepCR.Location = new System.Drawing.Point(540, 82);
+            this.sepCR.Name = "sepCR";
+            this.sepCR.Size = new System.Drawing.Size(12, 500);
+            this.sepCR.TabIndex = 4;
+            // 
+            // Form1
+            // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
+            this.ClientSize = new System.Drawing.Size(1270, 594);
+            this.Controls.Add(this.pnlHeader);
+            this.Controls.Add(this.pnlLeft);
+            this.Controls.Add(this.sepLC);
+            this.Controls.Add(this.pnlCenter);
+            this.Controls.Add(this.sepCR);
+            this.Controls.Add(this.pnlRight);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.Name = "Form1";
+            this.Text = "El Arquitecto de Datos";
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
+            this.pnlLeft.ResumeLayout(false);
+            this.pnlLeft.PerformLayout();
+            this.pnlCenter.ResumeLayout(false);
+            this.pnlCenter.PerformLayout();
+            this.pnlRight.ResumeLayout(false);
+            this.pnlRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCiudadanos)).EndInit();
+            this.ResumeLayout(false);
 
-            Font fontTitle = new Font("Segoe UI", 14F, FontStyle.Bold);
-            Font fontSub = new Font("Segoe UI", 8.5F, FontStyle.Regular);
-            Font fontSection = new Font("Segoe UI", 8F, FontStyle.Bold);
-            Font fontLabel = new Font("Segoe UI", 8F, FontStyle.Bold);
-            Font fontInput = new Font("Segoe UI", 10F, FontStyle.Regular);
-            Font fontBtn = new Font("Segoe UI", 9F, FontStyle.Bold);
-            Font fontBtnSm = new Font("Segoe UI", 8.5F, FontStyle.Bold);
-            Font fontSmall = new Font("Segoe UI", 8.5F, FontStyle.Regular);
-
-            // ── Controles ─────────────────────────────────────────────────
-            pnlHeader = new Panel();
-            pnlLeft = new Panel();
-            pnlCenter = new Panel();
-            pnlRight = new Panel();
-
-            lblTitulo = new Label();
-            lblSubtitulo = new Label();
-            lblSeccionRegistro = new Label();
-            lblSeccionBusqueda = new Label();
-            lblSeccionOps = new Label();
-            lblLote = new Label();
-
-            txtId = new TextBox();
-            txtNombre = new TextBox();
-            txtEdad = new TextBox();
-            txtPosicion = new TextBox();
-            btnGuardar = new Button();
-            txtBuscarId = new TextBox();
-            btnBuscarSecuencial = new Button();
-            btnBuscarIndexado = new Button();
-            lblTiempoSecuencial = new Label();
-            lblTiempoIndexado = new Label();
-            lblResultado = new Label();
-            btnMigrarSql = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            dgvCiudadanos = new DataGridView();
-            label6 = new Label();
-            btnMostrarDatos = new Button();
-            btnEditar = new Button();
-            btnEliminar = new Button();
-            btnCargar = new Button();
-            txtTamañoLote = new TextBox();
-            btnVaciar = new Button();
-
-            ((System.ComponentModel.ISupportInitialize)dgvCiudadanos).BeginInit();
-            SuspendLayout();
-
-            // ══════════════════════════════════════════════════════════════
-            //  HEADER
-            // ══════════════════════════════════════════════════════════════
-            Panel pnlAccent = new Panel();
-            pnlAccent.BackColor = cRose;
-            pnlAccent.Dock = DockStyle.Bottom;
-            pnlAccent.Height = 3;
-
-            lblTitulo.Text = "El Arquitecto de Datos";
-            lblTitulo.Font = fontTitle;
-            lblTitulo.ForeColor = Color.White;
-            lblTitulo.Location = new Point(20, 8);
-            lblTitulo.AutoSize = true;
-            lblTitulo.BackColor = Color.Transparent;
-
-            lblSubtitulo.Text = "Gestión y búsqueda de ciudadanos";
-            lblSubtitulo.Font = fontSub;
-            lblSubtitulo.ForeColor = Color.FromArgb(200, 175, 190);
-            lblSubtitulo.Location = new Point(22, 42);
-            lblSubtitulo.AutoSize = true;
-            lblSubtitulo.BackColor = Color.Transparent;
-
-            pnlHeader.BackColor = cHeaderBg;
-            pnlHeader.Dock = DockStyle.Top;
-            pnlHeader.Height = 70;
-            pnlHeader.Controls.Add(lblTitulo);
-            pnlHeader.Controls.Add(lblSubtitulo);
-            pnlHeader.Controls.Add(pnlAccent);
-
-            // ══════════════════════════════════════════════════════════════
-            //  PANEL IZQUIERDO  —  Registro
-            // ══════════════════════════════════════════════════════════════
-            pnlLeft.BackColor = cBgPanel;
-            pnlLeft.Location = new Point(12, 82);
-            pnlLeft.Size = new Size(258, 500);
-            pnlLeft.Name = "pnlLeft";
-
-            // Sección
-            lblSeccionRegistro.Text = "REGISTRO";
-            lblSeccionRegistro.Font = fontSection;
-            lblSeccionRegistro.ForeColor = cTextLight;
-            lblSeccionRegistro.Location = new Point(16, 18);
-            lblSeccionRegistro.AutoSize = true;
-            lblSeccionRegistro.BackColor = Color.Transparent;
-
-            // ID
-            label1.Text = "ID";
-            label1.Font = fontLabel;
-            label1.ForeColor = cTextMid;
-            label1.Location = new Point(16, 46);
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Name = "label1";
-            label1.TabIndex = 4;
-
-            txtId.Location = new Point(16, 62);
-            txtId.Size = new Size(224, 27);
-            txtId.ReadOnly = true;
-            txtId.TabIndex = 0;
-            txtId.Name = "txtId";
-            txtId.BackColor = cBgInputRO;
-            txtId.ForeColor = cTextLight;
-            txtId.Font = fontInput;
-            txtId.BorderStyle = BorderStyle.FixedSingle;
-
-            // Nombre
-            label2.Text = "NOMBRE";
-            label2.Font = fontLabel;
-            label2.ForeColor = cTextMid;
-            label2.Location = new Point(16, 100);
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Name = "label2";
-            label2.TabIndex = 3;
-
-            txtNombre.Location = new Point(16, 116);
-            txtNombre.Size = new Size(224, 27);
-            txtNombre.TabIndex = 1;
-            txtNombre.Name = "txtNombre";
-            txtNombre.BackColor = cBgInput;
-            txtNombre.ForeColor = cTextDark;
-            txtNombre.Font = fontInput;
-            txtNombre.BorderStyle = BorderStyle.FixedSingle;
-
-            // Edad
-            label3.Text = "EDAD";
-            label3.Font = fontLabel;
-            label3.ForeColor = cTextMid;
-            label3.Location = new Point(16, 154);
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Name = "label3";
-            label3.TabIndex = 2;
-
-            txtEdad.Location = new Point(16, 170);
-            txtEdad.Size = new Size(224, 27);
-            txtEdad.TabIndex = 2;
-            txtEdad.Name = "txtEdad";
-            txtEdad.BackColor = cBgInput;
-            txtEdad.ForeColor = cTextDark;
-            txtEdad.Font = fontInput;
-            txtEdad.BorderStyle = BorderStyle.FixedSingle;
-
-            // Posición
-            label4.Text = "POSICIÓN";
-            label4.Font = fontLabel;
-            label4.ForeColor = cTextMid;
-            label4.Location = new Point(16, 208);
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Name = "label4";
-            label4.TabIndex = 1;
-
-            txtPosicion.Location = new Point(16, 224);
-            txtPosicion.Size = new Size(224, 27);
-            txtPosicion.TabIndex = 3;
-            txtPosicion.Name = "txtPosicion";
-            txtPosicion.BackColor = cBgInput;
-            txtPosicion.ForeColor = cTextDark;
-            txtPosicion.Font = fontInput;
-            txtPosicion.BorderStyle = BorderStyle.FixedSingle;
-
-            // Divisor
-            Panel divReg = new Panel();
-            divReg.BackColor = cBorder;
-            divReg.Location = new Point(16, 264);
-            divReg.Size = new Size(224, 1);
-
-            // Guardar
-            btnGuardar.Location = new Point(16, 276);
-            btnGuardar.Size = new Size(224, 34);
-            btnGuardar.Text = "Guardar Registro";
-            btnGuardar.TabIndex = 4;
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.BackColor = cRose;
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.Font = fontBtn;
-            btnGuardar.FlatStyle = FlatStyle.Flat;
-            btnGuardar.FlatAppearance.BorderSize = 0;
-            btnGuardar.Cursor = Cursors.Hand;
-            btnGuardar.Click += btnGuardar_Click;
-
-            // Editar
-            btnEditar.Location = new Point(16, 320);
-            btnEditar.Size = new Size(108, 30);
-            btnEditar.Text = "Editar";
-            btnEditar.TabIndex = 15;
-            btnEditar.Name = "btnEditar";
-            btnEditar.BackColor = cBgPanel;
-            btnEditar.ForeColor = cMauve;
-            btnEditar.Font = fontBtnSm;
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.FlatAppearance.BorderColor = cMauve;
-            btnEditar.FlatAppearance.BorderSize = 1;
-            btnEditar.Cursor = Cursors.Hand;
-            btnEditar.Click += btnEditar_Click;
-
-            // Eliminar
-            btnEliminar.Location = new Point(132, 320);
-            btnEliminar.Size = new Size(108, 30);
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.TabIndex = 16;
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.BackColor = cBgPanel;
-            btnEliminar.ForeColor = cRoseDark;
-            btnEliminar.Font = fontBtnSm;
-            btnEliminar.FlatStyle = FlatStyle.Flat;
-            btnEliminar.FlatAppearance.BorderColor = cRoseDark;
-            btnEliminar.FlatAppearance.BorderSize = 1;
-            btnEliminar.Cursor = Cursors.Hand;
-            btnEliminar.Click += btnEliminar_Click;
-
-            // Cargar
-            btnCargar.Location = new Point(16, 360);
-            btnCargar.Size = new Size(108, 30);
-            btnCargar.Text = "Cargar";
-            btnCargar.TabIndex = 17;
-            btnCargar.Name = "btnCargar";
-            btnCargar.BackColor = cBgPanel;
-            btnCargar.ForeColor = cTextLight;
-            btnCargar.Font = fontBtnSm;
-            btnCargar.FlatStyle = FlatStyle.Flat;
-            btnCargar.FlatAppearance.BorderColor = cTextLight;
-            btnCargar.FlatAppearance.BorderSize = 1;
-            btnCargar.Cursor = Cursors.Hand;
-            btnCargar.Click += btnCargar_Click;
-
-            // Vaciar
-            btnVaciar.Location = new Point(132, 360);
-            btnVaciar.Size = new Size(108, 30);
-            btnVaciar.Text = "Vaciar";
-            btnVaciar.TabIndex = 19;
-            btnVaciar.Name = "btnVaciar";
-            btnVaciar.BackColor = cBgPanel;
-            btnVaciar.ForeColor = cTextLight;
-            btnVaciar.Font = fontBtnSm;
-            btnVaciar.FlatStyle = FlatStyle.Flat;
-            btnVaciar.FlatAppearance.BorderColor = cTextLight;
-            btnVaciar.FlatAppearance.BorderSize = 1;
-            btnVaciar.Cursor = Cursors.Hand;
-            btnVaciar.Click += btnVaciar_Click;
-
-            // Divisor lote
-            Panel divLote = new Panel();
-            divLote.BackColor = cBorder;
-            divLote.Location = new Point(16, 404);
-            divLote.Size = new Size(224, 1);
-
-            // Tamaño de lote
-            lblLote.Text = "TAMAÑO DE LOTE";
-            lblLote.Font = fontLabel;
-            lblLote.ForeColor = cTextMid;
-            lblLote.Location = new Point(16, 414);
-            lblLote.AutoSize = true;
-            lblLote.BackColor = Color.Transparent;
-
-            txtTamañoLote.Location = new Point(16, 432);
-            txtTamañoLote.Size = new Size(224, 40);
-            txtTamañoLote.Font = new Font("Segoe UI", 12F);
-            txtTamañoLote.Multiline = true;
-            txtTamañoLote.TabIndex = 18;
-            txtTamañoLote.Name = "txtTamañoLote";
-            txtTamañoLote.BackColor = cBgInput;
-            txtTamañoLote.ForeColor = cTextDark;
-            txtTamañoLote.BorderStyle = BorderStyle.FixedSingle;
-
-            pnlLeft.Controls.Add(lblSeccionRegistro);
-            pnlLeft.Controls.Add(label1);
-            pnlLeft.Controls.Add(txtId);
-            pnlLeft.Controls.Add(label2);
-            pnlLeft.Controls.Add(txtNombre);
-            pnlLeft.Controls.Add(label3);
-            pnlLeft.Controls.Add(txtEdad);
-            pnlLeft.Controls.Add(label4);
-            pnlLeft.Controls.Add(txtPosicion);
-            pnlLeft.Controls.Add(divReg);
-            pnlLeft.Controls.Add(btnGuardar);
-            pnlLeft.Controls.Add(btnEditar);
-            pnlLeft.Controls.Add(btnEliminar);
-            pnlLeft.Controls.Add(btnCargar);
-            pnlLeft.Controls.Add(btnVaciar);
-            pnlLeft.Controls.Add(divLote);
-            pnlLeft.Controls.Add(lblLote);
-            pnlLeft.Controls.Add(txtTamañoLote);
-
-            // ══════════════════════════════════════════════════════════════
-            //  PANEL CENTRAL  —  Búsqueda
-            // ══════════════════════════════════════════════════════════════
-            pnlCenter.BackColor = cBgPanel;
-            pnlCenter.Location = new Point(282, 82);
-            pnlCenter.Size = new Size(258, 500);
-            pnlCenter.Name = "pnlCenter";
-
-            lblSeccionBusqueda.Text = "BÚSQUEDA";
-            lblSeccionBusqueda.Font = fontSection;
-            lblSeccionBusqueda.ForeColor = cTextLight;
-            lblSeccionBusqueda.Location = new Point(16, 18);
-            lblSeccionBusqueda.AutoSize = true;
-            lblSeccionBusqueda.BackColor = Color.Transparent;
-
-            label5.Text = "ID A BUSCAR";
-            label5.Font = fontLabel;
-            label5.ForeColor = cTextMid;
-            label5.Location = new Point(16, 46);
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Name = "label5";
-            label5.TabIndex = 0;
-
-            txtBuscarId.Location = new Point(16, 62);
-            txtBuscarId.Size = new Size(224, 27);
-            txtBuscarId.TabIndex = 5;
-            txtBuscarId.Name = "txtBuscarId";
-            txtBuscarId.BackColor = cBgInput;
-            txtBuscarId.ForeColor = cTextDark;
-            txtBuscarId.Font = fontInput;
-            txtBuscarId.BorderStyle = BorderStyle.FixedSingle;
-
-            btnBuscarSecuencial.Location = new Point(16, 104);
-            btnBuscarSecuencial.Size = new Size(224, 32);
-            btnBuscarSecuencial.Text = "Búsqueda Secuencial";
-            btnBuscarSecuencial.TabIndex = 6;
-            btnBuscarSecuencial.Name = "btnBuscarSecuencial";
-            btnBuscarSecuencial.BackColor = cBgPanel;
-            btnBuscarSecuencial.ForeColor = cMauve;
-            btnBuscarSecuencial.Font = fontBtnSm;
-            btnBuscarSecuencial.FlatStyle = FlatStyle.Flat;
-            btnBuscarSecuencial.FlatAppearance.BorderColor = cMauve;
-            btnBuscarSecuencial.FlatAppearance.BorderSize = 1;
-            btnBuscarSecuencial.Cursor = Cursors.Hand;
-            btnBuscarSecuencial.Click += btnBuscarSecuencial_Click;
-
-            btnBuscarIndexado.Location = new Point(16, 146);
-            btnBuscarIndexado.Size = new Size(224, 32);
-            btnBuscarIndexado.Text = "Búsqueda Indexada";
-            btnBuscarIndexado.TabIndex = 7;
-            btnBuscarIndexado.Name = "btnBuscarIndexado";
-            btnBuscarIndexado.BackColor = cSage;
-            btnBuscarIndexado.ForeColor = Color.White;
-            btnBuscarIndexado.Font = fontBtnSm;
-            btnBuscarIndexado.FlatStyle = FlatStyle.Flat;
-            btnBuscarIndexado.FlatAppearance.BorderSize = 0;
-            btnBuscarIndexado.Cursor = Cursors.Hand;
-            btnBuscarIndexado.Click += btnBuscarIndexado_Click;
-
-            Panel divRes = new Panel();
-            divRes.BackColor = cBorder;
-            divRes.Location = new Point(16, 194);
-            divRes.Size = new Size(224, 1);
-
-            lblResultado.Text = "Esperando búsqueda...";
-            lblResultado.Font = fontSmall;
-            lblResultado.ForeColor = cTextLight;
-            lblResultado.Location = new Point(16, 200);
-            lblResultado.Size = new Size(224, 42);
-            lblResultado.AutoSize = false;
-            lblResultado.BackColor = Color.Transparent;
-            lblResultado.Name = "lblResultado";
-            lblResultado.TabIndex = 10;
-
-            Label lblTimingTitle = new Label();
-            lblTimingTitle.Text = "TIEMPOS DE EJECUCIÓN";
-            lblTimingTitle.Font = fontLabel;
-            lblTimingTitle.ForeColor = cTextLight;
-            lblTimingTitle.Location = new Point(16, 252);
-            lblTimingTitle.AutoSize = true;
-            lblTimingTitle.BackColor = Color.Transparent;
-
-            lblTiempoSecuencial.Text = "Secuencial:  0 ticks";
-            lblTiempoSecuencial.Font = fontSmall;
-            lblTiempoSecuencial.ForeColor = cTextMid;
-            lblTiempoSecuencial.Location = new Point(16, 274);
-            lblTiempoSecuencial.AutoSize = true;
-            lblTiempoSecuencial.BackColor = Color.Transparent;
-            lblTiempoSecuencial.Name = "lblTiempoSecuencial";
-            lblTiempoSecuencial.TabIndex = 8;
-
-            lblTiempoIndexado.Text = "Indexada:    0 ticks";
-            lblTiempoIndexado.Font = fontSmall;
-            lblTiempoIndexado.ForeColor = cSage;
-            lblTiempoIndexado.Location = new Point(16, 296);
-            lblTiempoIndexado.AutoSize = true;
-            lblTiempoIndexado.BackColor = Color.Transparent;
-            lblTiempoIndexado.Name = "lblTiempoIndexado";
-            lblTiempoIndexado.TabIndex = 9;
-
-            Panel divOps = new Panel();
-            divOps.BackColor = cBorder;
-            divOps.Location = new Point(16, 328);
-            divOps.Size = new Size(224, 1);
-
-            lblSeccionOps.Text = "OPERACIONES";
-            lblSeccionOps.Font = fontSection;
-            lblSeccionOps.ForeColor = cTextLight;
-            lblSeccionOps.Location = new Point(16, 340);
-            lblSeccionOps.AutoSize = true;
-            lblSeccionOps.BackColor = Color.Transparent;
-
-            btnMigrarSql.Location = new Point(16, 364);
-            btnMigrarSql.Size = new Size(224, 32);
-            btnMigrarSql.Text = "Migrar a SQL Server";
-            btnMigrarSql.TabIndex = 11;
-            btnMigrarSql.Name = "btnMigrarSql";
-            btnMigrarSql.BackColor = cSlate;
-            btnMigrarSql.ForeColor = Color.White;
-            btnMigrarSql.Font = fontBtnSm;
-            btnMigrarSql.FlatStyle = FlatStyle.Flat;
-            btnMigrarSql.FlatAppearance.BorderSize = 0;
-            btnMigrarSql.Cursor = Cursors.Hand;
-            btnMigrarSql.Click += btnMigrarSql_Click;
-
-            pnlCenter.Controls.Add(lblSeccionBusqueda);
-            pnlCenter.Controls.Add(label5);
-            pnlCenter.Controls.Add(txtBuscarId);
-            pnlCenter.Controls.Add(btnBuscarSecuencial);
-            pnlCenter.Controls.Add(btnBuscarIndexado);
-            pnlCenter.Controls.Add(divRes);
-            pnlCenter.Controls.Add(lblResultado);
-            pnlCenter.Controls.Add(lblTimingTitle);
-            pnlCenter.Controls.Add(lblTiempoSecuencial);
-            pnlCenter.Controls.Add(lblTiempoIndexado);
-            pnlCenter.Controls.Add(divOps);
-            pnlCenter.Controls.Add(lblSeccionOps);
-            pnlCenter.Controls.Add(btnMigrarSql);
-
-            // ══════════════════════════════════════════════════════════════
-            //  PANEL DERECHO  —  Datos
-            // ══════════════════════════════════════════════════════════════
-            pnlRight.BackColor = cBgPanel;
-            pnlRight.Location = new Point(552, 82);
-            pnlRight.Size = new Size(706, 500);
-            pnlRight.Name = "pnlRight";
-
-            label6.Text = "DATOS DE CIUDADANOS";
-            label6.Font = fontSection;
-            label6.ForeColor = cTextLight;
-            label6.Location = new Point(16, 20);
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Name = "label6";
-            label6.TabIndex = 13;
-
-            btnMostrarDatos.Location = new Point(558, 12);
-            btnMostrarDatos.Size = new Size(130, 32);
-            btnMostrarDatos.Text = "Mostrar Datos";
-            btnMostrarDatos.TabIndex = 14;
-            btnMostrarDatos.Name = "btnMostrarDatos";
-            btnMostrarDatos.BackColor = cRose;
-            btnMostrarDatos.ForeColor = Color.White;
-            btnMostrarDatos.Font = fontBtn;
-            btnMostrarDatos.FlatStyle = FlatStyle.Flat;
-            btnMostrarDatos.FlatAppearance.BorderSize = 0;
-            btnMostrarDatos.Cursor = Cursors.Hand;
-            btnMostrarDatos.Click += btnMostrarDatos_Click;
-
-            dgvCiudadanos.Location = new Point(16, 52);
-            dgvCiudadanos.Size = new Size(672, 436);
-            dgvCiudadanos.Name = "dgvCiudadanos";
-            dgvCiudadanos.TabIndex = 12;
-            dgvCiudadanos.RowHeadersWidth = 51;
-            dgvCiudadanos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCiudadanos.CellDoubleClick += dgvCiudadanos_CellDoubleClick;
-
-            pnlRight.Controls.Add(label6);
-            pnlRight.Controls.Add(btnMostrarDatos);
-            pnlRight.Controls.Add(dgvCiudadanos);
-
-            // ── Separadores visuales ──────────────────────────────────────
-            Panel sepLC = new Panel();
-            sepLC.BackColor = cPanelGap;
-            sepLC.Location = new Point(270, 82);
-            sepLC.Size = new Size(12, 500);
-
-            Panel sepCR = new Panel();
-            sepCR.BackColor = cPanelGap;
-            sepCR.Location = new Point(540, 82);
-            sepCR.Size = new Size(12, 500);
-
-            // ══════════════════════════════════════════════════════════════
-            //  FORMULARIO
-            // ══════════════════════════════════════════════════════════════
-            BackColor = cBgForm;
-            ClientSize = new Size(1270, 594);
-            Text = "El Arquitecto de Datos";
-            Name = "Form1";
-            Font = new Font("Segoe UI", 9.5F);
-
-            Controls.Add(pnlHeader);
-            Controls.Add(pnlLeft);
-            Controls.Add(sepLC);
-            Controls.Add(pnlCenter);
-            Controls.Add(sepCR);
-            Controls.Add(pnlRight);
-
-            Load += Form1_Load;
-
-            ((System.ComponentModel.ISupportInitialize)dgvCiudadanos).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
         }
 
         // ══════════════════════════════════════════════════════════════
@@ -639,5 +714,13 @@ namespace LabDatos2
         private Button btnCargar;
         private TextBox txtTamañoLote;
         private Button btnVaciar;
+        private Panel pnlAccent;
+        private Panel divReg;
+        private Panel divLote;
+        private Panel divRes;
+        private Label lblTimingTitle;
+        private Panel divOps;
+        private Panel sepLC;
+        private Panel sepCR;
     }
 }

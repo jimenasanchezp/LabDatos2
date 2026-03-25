@@ -30,7 +30,7 @@ namespace LabDatos2
             _gestorArchivos = new GestorArchivos();
             _gestorIndice = new GestorIndice();
 
-            _migradorSql = new MigradorSql("Server=10.12.13.143,1433;Database=LabDatosDB;User Id=sa;Password=123;TrustServerCertificate=True;");
+            _migradorSql = new MigradorSql("Server=10.12.13.108,1433;Database=LabDatosDB;User Id=sa;Password=123;TrustServerCertificate=True;");
 
              _gestorIndice.CargarIndice();
         }
@@ -145,7 +145,7 @@ namespace LabDatos2
                 lblResultado.Text = "Registro no encontrado.";
         }
 
-        private async void btnMigrarSql_Click(object sender, EventArgs e)
+        private async void BtnMigrarSql_Click(object sender, EventArgs e)
         {
             // 1. Validamos tu TextBox de Lotes
             if (!int.TryParse(txtTamañoLote.Text, out int tamañoLote) || tamañoLote <= 0)
